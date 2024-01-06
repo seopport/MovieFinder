@@ -86,17 +86,19 @@ body {
 }
 
 .movie-cards-box {
+    display: flex;
+    flex-direction: column;
     margin: 105px auto 0 auto;
     width: 1432px;
-    height: auto;
-    
 
 }
 
 .movie-cards-row {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 1432px;
+    height: 474px;
     /* border: solid 2px black; */
     margin: 0 auto 40px auto;
     
@@ -136,6 +138,13 @@ body {
     align-items: center;
 }
 
+.rating {
+    font-size: 22px;
+    padding-right: 11px;
+    font-style: italic;
+    white-space: nowrap; /*텍스트 줄 바꿈 방지*/
+}
+
 .movie-name{
     padding-top: 5px;
     font-weight: bold;
@@ -147,7 +156,7 @@ body {
     width: 335px;
     height: 423px;
     margin-right: 27px;
-    margin-top: 30px
+    margin-top: 20px;
 }
 
 
@@ -159,13 +168,9 @@ body {
     font-style: italic;
     margin-top: 13px;
     text-align: normal;
+    
 }
 
-.rating {
-    font-size: 22px;
-    padding-right: 11px;
-    font-style: italic;
-}
 
 
 
