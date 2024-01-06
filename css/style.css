@@ -1,0 +1,89 @@
+
+body {
+    background-image: url("../image/Anamnisar.jpg");
+    background-size : cover;
+    margin: 0;
+
+
+}
+
+.title {
+    color: white;
+    height: 233px;
+    border: solid 2px black;
+}
+
+.search-box {
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 748px;
+    height: 71px;
+    border: solid 2px black;
+}
+
+.input-movie {
+    width: 633px;
+    height: 71px;
+    border: solid 2px black;
+} 
+
+.search-btn {
+    width: 99px;
+    height: 71px;
+    border: solid 2px black;
+}
+
+.movie-cards-box {
+    margin: 105px auto 0 auto;
+    width: 1432px;
+    height: auto;
+    /* border: 1px solid green; */
+
+}
+
+.movie-cards-row {
+    display: flex;
+    justify-content: space-between;
+    width: 1432px;
+    height: 546px;
+    /* border: solid 2px black; */
+    margin: 0 auto 50px auto;
+}
+
+.card {
+    width: 325px;
+    height: 546px;
+    border-radius: 15px;
+    border: solid 2px black;
+}
+
+.movie-img{
+
+    margin: 17px auto auto auto;
+    width: 288px;
+    height: 432px;
+    border-radius: 11px;
+    background-color: rosybrown;
+}
+
+.movie-name{
+    padding-left: 22px;
+    padding-top: 5px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 24px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.movie-overview {
+    margin: 6px 17px 5px 25px;
+}
+
+.rating {
+    margin: 10px auto auto 25px;
+    font-size: 20px;
+
+}
