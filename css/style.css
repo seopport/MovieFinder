@@ -15,6 +15,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     height: 100%;
     margin: 0;
+
     background: linear-gradient(to right, #9796f0, #fbc7d4);
         /* 왼쪽에서 오른쪽으로 그라데이션 적용, 시작 색상: #ff8a00, 끝 색상: #da1b60 */
 
@@ -158,12 +159,12 @@ body {
     padding-right: 10px;
     font-size: 20px;
     font-style: italic;
-    margin-top: 10px;
+    margin-top: 13px;
     text-align: normal;
 }
 
 .rating {
-    font-size: 25px;
+    font-size: 22px;
     padding-right: 11px;
     font-style: italic;
 }
