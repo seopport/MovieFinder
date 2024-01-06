@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Finder</title>
     <link rel="stylesheet" href="./css/style.css">
-    <!--<link rel="stylesheet" href="./css/reset.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@200;400&family=Nanum+Myeongjo:wght@800&family=Noto+Sans:ital,wght@0,500;1,300;1,400&family=Noto+Serif+KR:wght@200;300&family=Orbit&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
     <div class="title">Movie Finder</div>
     <div class="search-box">
-        <div class="input-movie"></div>
-        <div class="search-btn"></div>
+        <input class="input-movie" placeholder="Search..."></input>
+        <button type="button" class="search-btn">Go!</button>
     </div>
     <div class="movie-cards-box">
         <div class="movie-cards-row">
             <div class="card">
-                <div class="movie-img"></div>
+                    <img class="movie-img" src="https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg">
                 <div class="movie-content">
                     <div class="name-rating-box">
                         <span class="movie-name">Forest Gump</span>
@@ -107,7 +113,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </body>
