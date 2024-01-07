@@ -43,7 +43,7 @@ const appendCard = async () => {
         const DATA = res //변수에저장  
 
         let movieDataArr = DATA['results'] //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
-        // console.log(movieDataArr[0]);
+        console.log(movieDataArr);
         let addHTML = ''; //
         let title; //영화 제목
         let voteAverage; //평점
@@ -51,7 +51,7 @@ const appendCard = async () => {
         let posterPath; //포스터 이미지 경로
 
         movieDataArr.forEach(movieObj => { //영화 데이터 배열 순회
-            title = movieObj['original_title']; //배열 내 객체의 ['key']값의 value 저장
+            title = movieObj['title']; //배열 내 객체의 ['key']값의 value 저장
             voteAverage = movieObj['vote_average'].toFixed(2); //소수점 2번째 자리까지만
             overview = movieObj['overview'];
             posterPath = movieObj['poster_path'];
@@ -90,7 +90,7 @@ const appendCard = async () => {
     } catch (err) {
         err => { //통신 실패 시
             if (err instanceof HttpError && err.response.status == 404) {
-                alert("일치하는 애니메이션이 없습니다. 일반인이시면 naruto, onepiece 정도나 입력해주세요!");
+                alert("통신 실패");
             } else {
                 throw err;
             }
