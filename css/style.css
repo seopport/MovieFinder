@@ -6,179 +6,184 @@ font-family: 'Nanum Myeongjo', serif;
 font-family: 'Noto Serif KR', serif;
 font-family: 'Orbit', sans-serif;
 */
-body {
-    transform: scale(0.95);
-    transform-origin: top;
-    margin: 0;
-    font-family: 'Noto Sans', sans-serif;
-    height: 100%;
-    background: linear-gradient(to right, #9796f0, #fbc7d4);
-        /* 왼쪽에서 오른쪽으로 그라데이션 적용, 시작 색상: #ff8a00, 끝 색상: #da1b60 */
-    width: 100%;
 
+html {
+  margin: 0;
+  height: 100%;
 }
 
+body {
+  transform: scale(0.95);
+  transform-origin: top;
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
 
+  background: linear-gradient(to right, #9796f0, #fbc7d4);
+  /* 왼쪽에서 오른쪽으로 그라데이션 적용, 시작 색상: #ff8a00, 끝 색상: #da1b60 */
+  width: 100%;
+}
 
 .title {
-    color: white;
-    height: 233px;
-    font-size: 64px;
-    font-style: italic;
-    font-weight: lighter;
-    line-height: 233px;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-
+  color: white;
+  height: 233px;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: lighter;
+  line-height: 233px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-
 .search-box {
-    margin: 0 auto 0 auto;
-    display: flex;
-    justify-content: space-between;
-    width: 748px;
-    height: 71px;
-    color: white;
-    
-
+  margin: 0 auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 748px;
+  height: 71px;
+  color: white;
 }
 
 .input-movie {
-    width: 633px;
-    height: 71px;
-    border-radius: 36px;
-    background-color: rgba(251, 251, 251, 100);
-    box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
-    border: none;
-    padding-left: 30px;
-    font-size: 22px;
-    box-sizing: border-box;
-    line-height: 71px;
-} 
+  width: 633px;
+  height: 71px;
+  border-radius: 36px;
+  background-color: rgba(251, 251, 251, 100);
+  box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
+  border: none;
+  padding-left: 30px;
+  font-size: 22px;
+  box-sizing: border-box;
+  line-height: 71px;
+}
 
 .input-movie:focus {
-    outline: none;
+  outline: none;
 }
 
 .search-btn {
-    width: 99px;
-    height: 71px;
-    background-color: rgba(228, 143, 224, 100);
-    color: white;
-    border-radius: 36px;
-    text-align: center;
-    line-height: 71px;
-    box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
-    font-size: 22px;
-    font-weight: lighter;
-    border: none;
-    letter-spacing :1.2px;
+  width: 99px;
+  height: 71px;
+  background-color: rgba(228, 143, 224, 100);
+  color: white;
+  border-radius: 36px;
+  text-align: center;
+  line-height: 71px;
+  box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
+  font-size: 22px;
+  font-weight: lighter;
+  border: none;
+  letter-spacing: 1.2px;
 }
 
 .search-btn:hover {
-    background-color: rgba(225, 138, 214, 100);
+  background-color: rgba(225, 138, 214, 100);
 }
 
 .search-btn:active {
-    background-color: rgba(230, 130, 214, 100);
-
+  background-color: rgba(230, 130, 214, 100);
 }
 
 .movie-cards-box {
-    display: flex;
-    flex-direction: column;
-    margin: 105px auto 0 auto;
-    width: 1432px;
-
+  display: flex;
+  flex-direction: column;
+  margin: 105px auto 0 auto;
+  width: 1432px;
 }
 
 .movie-cards-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 1432px;
-    height: 474px;
-    /* border: solid 2px black; */
-    margin: 0 auto 40px auto;
-    
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto 40px auto;
 }
+
+/* display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1432px;
+  height: 474px;
+  /* border: solid 2px black; 
+  margin: 0 auto 40px auto; */
 
 .card {
-    display: flex;
-    align-items: center;
-    width: 694px;
-    height: 474px;
-    border-radius: 15px;
-    background-color: rgba(251, 251, 251, 100);
-    box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
-    margin-bottom: 40px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 694px;
+  height: 474px;
+  border-radius: 15px;
+  background-color: rgba(251, 251, 251, 100);
+  box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  cursor: pointer;
 }
 
-.card-in-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
+.card-in-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
 }
 
-
-.movie-img{
-    margin-left: 27px;
-    margin-right: 25px;
-    width: 280px;
-    height: 423px;
-    border-radius: 11px;
-    box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
+.movie-img {
+  margin-left: 27px;
+  margin-right: 25px;
+  width: 280px;
+  height: 423px;
+  border-radius: 11px;
+  box-shadow: 0px 3px 6.3px 2px rgba(0, 0, 0, 0.15);
 }
 
 .name-rating-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .rating {
-    font-size: 22px;
-    padding-right: 11px;
-    font-style: italic;
-    white-space: nowrap; /*텍스트 줄 바꿈 방지*/
+  font-size: 22px;
+  padding-right: 11px;
+  font-style: italic;
+  white-space: nowrap; /*텍스트 줄 바꿈 방지*/
 }
 
-.movie-name{
-    padding-top: 5px;
-    font-weight: bold;
-    font-size: 24px;
-    display: block;
+.movie-name {
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  display: block;
 }
 
 .movie-content {
-    width: 335px;
-    height: 423px;
-    margin-right: 27px;
-    margin-top: 20px;
+  width: 335px;
+  height: 423px;
+  margin-right: 27px;
+  margin-top: 20px;
 }
 
-
-
 .movie-overview {
-    padding-left: 3px;
-    padding-right: 10px;
-    font-size: 20px;
-    font-style: italic;
-    margin-top: 13px;
-    text-align: normal;
-    
+  padding-left: 3px;
+  padding-right: 10px;
+  font-size: 20px;
+  font-style: italic;
+  margin-top: 13px;
+  text-align: normal;
 }
 
 .bottom {
-    background-color:yellowgreen;
-    width: 500px;
-    height: 399px;
+  background-color: yellowgreen;
+  width: 500px;
+  height: 399px;
 }
 
-
-
-
+a {
+  text-align: center;
+  color: #ebddf3;
+  font-size: 20px;
+  font-weight: lighter;
+  font-style: italic;
+  text-decoration: none;
+  display: block;
+  padding-bottom: 30px;
+}
