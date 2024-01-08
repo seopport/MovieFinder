@@ -194,7 +194,7 @@ goBtn.addEventListener('click', async () => {
 /* input-movie요소에서 Enter 버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
 const inputEnterPressed = document.getElementById("input-movie");
 inputEnterPressed.addEventListener("keyup", function (e) {
-    if(e.code === 'enter'){
+    if(e.code === 'Enter'){
         appendSearchedCard();
     }
 });
