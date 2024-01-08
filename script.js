@@ -34,6 +34,8 @@ const loadJson = async (URL) => {
     }
 }
 
+
+
 /* API를 활용하여 받아온 데이터로 구성한 카드 생성하기 */
 const appendCard = async () => {
     let res;
@@ -101,19 +103,17 @@ const appendCard = async () => {
 
 appendCard();
 
-//이벤트 리스너로 Go 눌리면 
-// input값 받아오고
-//조건에 맞는것만 append하는 함수 호출
-const goBtn = document.getElementById('search-btn');
 
+/* Go버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
+const goBtn = document.getElementById('search-btn');
 goBtn.addEventListener('click', async (e) => {
-    let inputMovie = document.getElementById("input-movie").value; 
+    let inputMovie = document.getElementById("input-movie").value;
     inputMovie = inputMovie.toLowerCase();
     console.log(inputMovie);
     document.getElementById("movie-cards-row").innerHTML = '';
-    
 
-    /* 조건에 맞는 것만 append하는 함수 */
+
+    /* 검색한 조건에 맞는 것만 append하는 함수 */
     const appendSearchedCard = async () => {
         let res;
 
@@ -141,10 +141,6 @@ goBtn.addEventListener('click', async (e) => {
                 
             });
             */
-            
-
-            
-            
 
             titleMatchObjs.forEach(movieObj => { //영화 데이터 배열 순회
                 title = movieObj['title']; //배열 내 객체의 ['key']값의 value 저장
@@ -152,7 +148,7 @@ goBtn.addEventListener('click', async (e) => {
                 overview = movieObj['overview'];
                 posterPath = movieObj['poster_path'];
                 idValue = movieObj['id'];
-  
+
                 addHTML = `
                 <div class="card" id="card"><p id="id" style="display:none">${idValue}<p>
                 <img class="movie-img" src="https://image.tmdb.org/t/p/original/${posterPath}">
@@ -166,7 +162,7 @@ goBtn.addEventListener('click', async (e) => {
                 </div>
                 `;
 
-                
+
                 document.getElementById("movie-cards-row").innerHTML += addHTML;
             });
 
@@ -198,6 +194,88 @@ goBtn.addEventListener('click', async (e) => {
     appendSearchedCard();
 });
 
+/* input-movie요소에서 Enter 버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
+const inputEnterPressed = document.getElementById("input-movie");
+inputEnterPressed.addEventListener("keyup", function (event) {
+    if (event.code === 'Enter') {
+        // alert('Enter is pressed!');
+        let inputMovie = document.getElementById("input-movie").value;
+        console.log(inputMovie);
+        inputMovie = inputMovie.toLowerCase();
+        console.log(inputMovie);
+        document.getElementById("movie-cards-row").innerHTML = '';
+
+
+        /* 검색한 조건에 맞는 것만 append하는 함수 */
+        const appendSearchedCard = async () => {
+            let res;
+
+            try {
+                res = await loadJson(URL); //loadJson 함수로 데이터받아오기
+                const DATA = res //변수에저장  
+
+                let movieDataArr = DATA['results'] //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
+                let addHTML = '';
+                let voteAverage; //평점
+                let overview; //내용 요약
+                let posterPath; //포스터 이미지 경로
+                let title; //영화 제목
+
+                /* 검색한 문자열이 들어있는 title을 갖고 있는 객체 추출 */
+                let titleMatchObjs = movieDataArr.filter((keys) => keys['title'].toLowerCase().includes(inputMovie));
+
+                titleMatchObjs.forEach(movieObj => { //영화 데이터 배열 순회
+                    title = movieObj['title']; //배열 내 객체의 ['key']값의 value 저장
+                    voteAverage = movieObj['vote_average'].toFixed(2); //소수점 2번째 자리까지만
+                    overview = movieObj['overview'];
+                    posterPath = movieObj['poster_path'];
+                    idValue = movieObj['id'];
+
+                    addHTML = `
+                <div class="card" id="card"><p id="id" style="display:none">${idValue}<p>
+                <img class="movie-img" src="https://image.tmdb.org/t/p/original/${posterPath}">
+                <div class="movie-content">
+                <div class="name-rating-box">
+                <span class="movie-name">${title}</span>
+                <span class="rating" id="rating">⭐ ${voteAverage}</span>
+                </div>
+                <p class="movie-overview">${overview}</p>
+                </div>
+                </div>
+                `;
+
+
+                    document.getElementById("movie-cards-row").innerHTML += addHTML;
+                });
+
+
+                /* 카드 클릭 시 ID alert창 띄우기 */
+                let cards = document.querySelectorAll('.card'); //id값이 card인 요소들 모두 가져와서 배열에 저장
+                // console.log(card);
+
+                cards.forEach(card => { //가져온 card 배열 순회하며 클릭 된 카드의 이벤트 생성
+                    card.addEventListener('click', function (e) {
+                        target = e.currentTarget;
+                        let idValue = target.children[0].textContent; //id값 가져오기
+                        alert(`🎬Movie ID : ${idValue}`)
+                    });
+
+                });
+
+            } catch (err) {
+                err => { //통신 실패 시
+                    if (err instanceof HttpError && err.response.status == 404) {
+                        alert("통신 실패");
+                    } else {
+                        throw err;
+                    }
+                }
+            }
+        }
+
+        appendSearchedCard();
+    }
+});
 
 
 /*
