@@ -1,2 +1,124 @@
 # MovieFinder
 OpenAPI를 활용하여 영화 검색 사이트 만들기
+
+# 프로젝트 "MovieFinder"
+
+
+
+### 🔽 **프로젝트 소개**
+
+**프로젝트 명** : *MovieFinder*
+
+**개발 기간** : 2024.01.05 ~ 2024.01.09
+
+**프로젝트 소개** : 인기 영화를 검색할 수 있는 사이트입니다.
+
+**프로젝트 목표** : OpenAPI를 활용하여 인기 영화 리스트를 출력하고, 원하는 영화를 검색할 수 있습니다.
+
+
+<br>
+
+
+### **🔽 시작 가이드**
+
+
+```bash
+$ git clone <https://github.com/seopport/MovieFinder.git>
+$ cd MovieFinder
+```
+
+<br>
+
+### **# 와이어프레임**
+![Wireframe](https://github.com/seopport/MovieFinder/assets/103973797/3574a6a4-a4e0-429f-9864-bcd08bb5b5cf)
+
+
+<br>
+
+### # 화면 구성 및 기능
+
+|                            메인틀                            |                             비고                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="https://github.com/seopport/MovieFinder/assets/103973797/d5b5ac89-f40e-486b-97b6-90b46188008b" style="width: 60%;" /> |                     메인 페이지 입니다.                      |
+|                             헤더                             |                                                              |
+| ![image-20240108205820438](https://github.com/seopport/MovieFinder/assets/103973797/0ddfcfb3-fd19-42d4-9011-dcb5b59e0769) |              타이틀과 검색창이 있는 헤더입니다.              |
+|                          **검색창**                          |                                                              |
+| ![image-20240108210047223](https://github.com/seopport/MovieFinder/assets/103973797/b2eaa8ed-b8e7-4c2f-a82c-41b24c0833c5)| 검색할 영화를 입력할 검색창입니다.<br />Enter와 Go버튼을 사용해 검색할 수 있습니다. |
+|                        **영화 카드**                         |                                                              |
+| ![image-20240108205847246](https://github.com/seopport/MovieFinder/assets/103973797/a311ddd9-d360-41bd-8467-a2242cd28fe3) | 영화 카드입니다.<br />영화 카드는 영화 이름, 평점<br />영화 요약, 포스터 이미지로 구성되어 있습니다. |
+|                       **영화 검색 시**                       |                                                              |
+| <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108205920397.png" alt="image-20240108205920397" style="zoom:40%;" /> | 영화 검색 시 일치하는 <br />영화 목록들을 출력합니다.<br />영화 검색은 대소문자 구분 없이<br />검색할 수 있습니다. |
+|                         카드 클릭 시                         |                                                              |
+| ![image-20240108210212977](C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108210212977.png) | 영화 카드를 클릭하면<br />영화 아이디를 출력하는 alert창을 띄웁니다. |
+|                    **검색 결과 없을 시**                     |                                                              |
+| <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108210318142.png" alt="image-20240108210318142" style="zoom:50%;" /> | 일치하는 검색 결과가 없을 시<br />검색 결과가 없음을 알리는 alert창을 띄웁니다. |
+|                                                              |                                                              |
+
+
+------
+
+#### 1. 필수 요구 사항
+
++ 순수 바닐라 자바스크립트 사용하기
++ TMDB 오픈 API를 이용하여 인기영화 데이터 가져오기
++ 영화정보 카드 리스트 UI 구현
++ 카드 클릭 시에는 클릭한 영화 id 를 나타내는 alert 창 띄우기
++ 영화 검색 UI 구현
+  + 검색칸에 영화 이름을 입력하면 일치하는 영화들만 출력하기
+
+
+
+#### 2. 선택 요구 사항
+
++ flex 사용하기
++ 페이지 로드 후 입력칸에 커서 자동 위치시키기
++ 대소문자 관계없이 검색 가능하게 하기
++ 키보드 enter키를 입력하여 검색하기
++ 검색 시 일치하는 항목 없을 시 alert창 띄우기
+
+
+
+#### 3. 화면 구성
+
+- [ ] |                            메인틀                            |                             비고                             |
+  | :----------------------------------------------------------: | :----------------------------------------------------------: |
+  | <img src="D:\다운로드\웹 캡처_8-1-2024_205622_127.0.0.1.jpeg" style="zoom: 25%;" /> |                     메인 페이지 입니다.                      |
+  |                             헤더                             |                                                              |
+  | <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108205820438.png" alt="image-20240108205820438" style="zoom:33%;" /> |              타이틀과 검색창이 있는 헤더입니다.              |
+  |                          **검색창**                          |                                                              |
+  | <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108210047223.png" alt="image-20240108210047223" style="zoom:67%;" /> | 검색할 영화를 입력할 검색창입니다.<br />Enter와 Go버튼을 사용해 검색할 수 있습니다. |
+  |                        **영화 카드**                         |                                                              |
+  | <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108205847246.png" alt="image-20240108205847246" style="zoom:60%;" /> | 영화 카드입니다.<br />영화 카드는 영화 이름, 평점<br />영화 요약, 포스터 이미지로 구성되어 있습니다. |
+  |                       **영화 검색 시**                       |                                                              |
+  | <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108205920397.png" alt="image-20240108205920397" style="zoom:40%;" /> | 영화 검색 시 일치하는 <br />영화 목록들을 출력합니다.<br />영화 검색은 대소문자 구분 없이<br />검색할 수 있습니다. |
+  |                         카드 클릭 시                         |                                                              |
+  | ![image-20240108210212977](C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108210212977.png) | 영화 카드를 클릭하면<br />영화 아이디를 출력하는 alert창을 띄웁니다. |
+  |                    **검색 결과 없을 시**                     |                                                              |
+  | <img src="C:\Users\seo\AppData\Roaming\Typora\typora-user-images\image-20240108210318142.png" alt="image-20240108210318142" style="zoom:50%;" /> | 일치하는 검색 결과가 없을 시<br />검색 결과가 없음을 알리는 alert창을 띄웁니다. |
+  |                                                              |                                                              |
+  |                                                              |                                                              |
+
+
+
+#### 4. 기능 소개
+
++ 메인 페이지
+  + flex를 사용하여 반응형 웹으로 구현하였습니다.
+  + 페이지를 로드하면 자동으로 입력칸에 커서를 위치시킵니다.
+
++ 영화 카드 리스트
+  + TMDB 오픈 API를 활용하여 인기영화 데이터를 가져와 영화 카드 리스트 UI를 구현합니다.
+  + 영화 카드는 영화 이름, 평점, 영화 요약, 포스터 이미지로 구성되어 있습니다.
+  + 영화 카드를 클릭하면 영화 ID를 알려주는 alert를 띄웁니다.
+  + 
++ 검색
+  + 검색창에 영화 제목을 입력하고 엔터를 누르거나, Go버튼을 눌러 검색할 수 있습니다.
+  + 입력한 영화 제목과 일치하는 영화 카드들만 출력합니다.
+  + 검색 시 대소문자를 구분하지 않습니다.
+  + 입력한 영화 제목과 일치하는 항목이 없을 시 검색 결과가 없음을 알려주는 alert를 띄우고 다시 모든 카드들을 보여줍니다.
+
+
+
+
+# 트러블 슈팅
+
