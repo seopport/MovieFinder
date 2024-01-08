@@ -108,8 +108,8 @@ const goBtn = document.getElementById('search-btn');
 
 goBtn.addEventListener('click', async (e) => {
     let inputMovie = document.getElementById("input-movie").value; 
-    // inputMovie = inputMovie.toLowerCase();
-    // console.log(inputMovie);
+    inputMovie = inputMovie.toLowerCase();
+    console.log(inputMovie);
     document.getElementById("movie-cards-row").innerHTML = '';
     
 
@@ -122,16 +122,29 @@ goBtn.addEventListener('click', async (e) => {
             const DATA = res //변수에저장  
 
             let movieDataArr = DATA['results'] //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
-            console.log(movieDataArr);
             let addHTML = '';
             let voteAverage; //평점
             let overview; //내용 요약
             let posterPath; //포스터 이미지 경로
             let title; //영화 제목
 
-            /* 검색한 문자열이 들어있는 title만 추출 */
-            let titleMatchObjs = movieDataArr.filter((keys) => keys['title'].includes(inputMovie));
-            // console.log(titleMatchObjs);
+            /* 검색한 문자열이 들어있는 title을 갖고 있는 객체 추출 */
+            let titleMatchObjs = movieDataArr.filter((keys) => keys['title'].toLowerCase().includes(inputMovie));
+
+            /*
+            let titleMatchObjs2 = movieDataArr.map((keys) => keys['title'] );
+            console.log(titleMatchObjs2);
+
+            titleMatchObjs2.forEach(title => {
+                let lowerTItle = title.toLowerCase();
+                console.log(lowerTItle);
+                
+            });
+            */
+            
+
+            
+            
 
             titleMatchObjs.forEach(movieObj => { //영화 데이터 배열 순회
                 title = movieObj['title']; //배열 내 객체의 ['key']값의 value 저장
@@ -182,7 +195,6 @@ goBtn.addEventListener('click', async (e) => {
         }
     }
 
-    // document.getElementById("movie-card-box").innerHTML = "";
     appendSearchedCard();
 });
 
