@@ -42,28 +42,22 @@ const loadJsonMovieData = async (URL) => {
 const RenderCards = async (movieDataArr) => {
   try {
     let addHTML = ""; //
-    let title; //영화 제목
     let voteAverage; //평점
-    let overview; //내용 요약
-    let posterPath; //포스터 이미지 경로
 
     movieDataArr.forEach((movieObj) => {
       //영화 데이터 배열 순회
-      title = movieObj["title"]; //배열 내 객체의 ['key']값의 value 저장
+
       voteAverage = movieObj["vote_average"].toFixed(2); //소수점 2번째 자리까지만
-      overview = movieObj["overview"];
-      posterPath = movieObj["poster_path"];
-      idValue = movieObj["id"];
 
       addHTML = `
-              <div class="card" id=${idValue}>
-              <img class="movie-img" src="https://image.tmdb.org/t/p/original/${posterPath}" alt="Movie Poster">
+              <div class="card" id=${movieObj.id}>
+              <img class="movie-img" src="https://image.tmdb.org/t/p/original/${movieObj.poster_path}" alt="Movie Poster">
               <div class="movie-content">
               <div class="name-rating-box">
-              <span class="movie-name">${title}</span>
+              <span class="movie-name">${movieObj.title}</span>
               <span class="rating" id="rating">⭐ ${voteAverage}</span>
               </div>
-              <p class="movie-overview">${overview}</p>
+              <p class="movie-overview">${movieObj.overview}</p>
               </div>
               </div>
               `;
@@ -131,6 +125,8 @@ const appendSearchedCard = async () => {
       //일치 검색 결과가 없을 때 유효성 검사
       alert("검색 결과가 없습니다.");
       appendCard();
+      console.log(inputMovie);
+      inputMovie.console.log(inputMovie);
     }
 
     RenderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
