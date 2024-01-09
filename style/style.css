@@ -98,14 +98,6 @@ body {
   margin: 0 auto 40px auto;
 }
 
-/* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 1432px;
-  height: 474px;
-  /* border: solid 2px black; 
-  margin: 0 auto 40px auto; */
-
 .card {
   display: flex;
   align-items: center;
@@ -168,13 +160,7 @@ body {
   font-size: 20px;
   font-style: italic;
   margin-top: 13px;
-  text-align: normal;
-}
-
-.bottom {
-  background-color: yellowgreen;
-  width: 500px;
-  height: 399px;
+  line-height: normal;
 }
 
 a {
