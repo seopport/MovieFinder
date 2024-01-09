@@ -138,7 +138,7 @@ $ cd MovieFinder
   - EventListener의 이벤트타입을 keypress로 변경하기
   이벤트리스너에 할당한 이벤트타입을 `keyup → keypress`로 바꾸니 해결할 수 있었다. 그러나  `keypress`는 사용이 권장되지 않기때문에 다른 방법을 찾아보았다.
   
-  - isComposing 함수 사용하기
+  - isComposing 함수 사용하기<br>
   먼저 한글에서만 버그가 발생하는 이유는 한글이 자음과 모음의 조합으로 한 음절이 만들어지는 조합문자이기 때문이다. 그래서 조합되고있을 때 작업이 한번 수행되고, 조합이 완료되었을 때 작업이 한번 수행되어 총 두번의 작업이 수행되고 있었다. (*한글을 입력할 때 표시되는 밑줄이 조합되고 있음을 알려주는 표시다. 그래서 한글을 입력하고, 방향키를 눌러 밑줄을 없애 조합이 완료된 것으로 나타내면 해당 버그가 발생하지 않았다.)*
   영어는 한 음절이 하나의 알파벳으로 이루어지고, 조합문자가 아니기때문에 영어를 입력할 때는 버그가 발생하지 않았던 것이다.
   
@@ -154,11 +154,13 @@ $ cd MovieFinder
   isComposing에 false를 조건으로 사용하여 조합이 완료되었을 때 작업을 수행하도록 하였다.
 
    ```jsx
+inputEnterPressed.addEventListener("keyup", function (e) {
    if (e.code === "Enter") {
       if (!e.isComposing) {
         appendSearchedCard();
       }
     }
+}
   ```
 
 
