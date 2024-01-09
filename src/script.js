@@ -1,7 +1,3 @@
-// const apiKey = "829abd2f59161186fe076a0bf306e719";
-// const apiToken =
-//   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjlhYmQyZjU5MTYxMTg2ZmUwNzZhMGJmMzA2ZTcxOSIsInN1YiI6IjY1OTk1Nzg5YmQ1ODhiMDIwNDU3NTU1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.014IzV6JFQswTqZDfeIjHDud_khco-fa3a_GOd4V2gE";
-
 /* api키 연결하고 데이터 받아오기 */
 const options = {
   method: "GET",
@@ -13,18 +9,6 @@ const options = {
 };
 
 const URL = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-// fetch(URL, options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));
-
-class HttpError extends Error {
-  constructor(response) {
-    super(`${response.status} for ${response.url}`);
-    this.name = "HttpError";
-    this.response = response;
-  }
-}
 
 const loadJsonMovieData = async (URL) => {
   try {
@@ -38,6 +22,14 @@ const loadJsonMovieData = async (URL) => {
   }
 };
 
+class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = "HttpError";
+    this.response = response;
+  }
+}
+
 /* 카드 만드는 함수 */
 const RenderCards = async (movieDataArr) => {
   try {
@@ -46,7 +38,6 @@ const RenderCards = async (movieDataArr) => {
 
     movieDataArr.forEach((movieObj) => {
       //영화 데이터 배열 순회
-
       voteAverage = movieObj["vote_average"].toFixed(2); //소수점 2번째 자리까지만
 
       addHTML = `
@@ -67,7 +58,7 @@ const RenderCards = async (movieDataArr) => {
       /* 카드 클릭 시 ID alert창 띄우기 */
       const cards = document.querySelectorAll(".card"); //id값이 card인 요소들 모두 가져와서 배열에 저장
 
-      /* 가져온 card 배열 순회하며 클릭 된 카드의 이벤트 생성 */
+      // 가져온 card 배열 순회하며 클릭 된 카드의 이벤트 생성
       cards.forEach((card) => {
         card.addEventListener("click", function (e) {
           target = e.currentTarget;
@@ -95,6 +86,7 @@ const appendCard = async () => {
     res = await loadJsonMovieData(URL); //loadJsonMovieData 함수로 데이터받아오기
     const movieDataArr = res; //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
     RenderCards(movieDataArr); //받아온 데이터로 카드 RenderCard
+    numOfCards.style = "display: none;";
   } catch (err) {
     (err) => {
       //통신 실패 시
@@ -108,6 +100,8 @@ const appendCard = async () => {
 };
 
 appendCard();
+
+let numOfCards = document.getElementById("numOfCards");
 
 /* 검색한 조건에 맞는 영화 카드만 생성하기 */
 const appendSearchedCard = async () => {
@@ -125,10 +119,10 @@ const appendSearchedCard = async () => {
       //일치 검색 결과가 없을 때 유효성 검사
       alert("검색 결과가 없습니다.");
       appendCard();
-      console.log(inputMovie);
-      inputMovie.console.log(inputMovie);
     }
 
+    numOfCards.textContent = `About ${titleMatchArr.length} results`;
+    numOfCards.style = "display: inline";
     RenderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
   } catch (err) {
     (err) => {
@@ -158,4 +152,11 @@ inputEnterPressed.addEventListener("keydown", function (e) {
   }
 });
 
-//isComposing = 한글이면 true, 영어면 false
+// const apiKey = "829abd2f59161186fe076a0bf306e719";
+// const apiToken =
+//   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjlhYmQyZjU5MTYxMTg2ZmUwNzZhMGJmMzA2ZTcxOSIsInN1YiI6IjY1OTk1Nzg5YmQ1ODhiMDIwNDU3NTU1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.014IzV6JFQswTqZDfeIjHDud_khco-fa3a_GOd4V2gE";
+
+// fetch(URL, options)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));

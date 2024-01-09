@@ -88,6 +88,18 @@ body {
   flex-direction: column;
   margin: 105px auto 0 auto;
   width: 1425px;
+  position: relative;
+}
+
+.num-of-cards {
+  color: white;
+  font-size: 20px;
+  font-style: italic;
+  display: none;
+  width: max-content;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  position: static;
 }
 
 .movie-cards-row {
