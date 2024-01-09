@@ -16,6 +16,17 @@ OpenAPI를 활용하여 영화 검색 사이트 만들기
 
 **프로젝트 목표** : OpenAPI를 활용하여 인기 영화 리스트를 출력하고, 원하는 영화를 검색할 수 있습니다.
 
+<br>
+
+### 🔽  **개발 환경**
+
+- **editor :** Visual Studio Code
+- **environment :** git, github
+- **language :** Javascript
+- **API** : TMDb API
+- **design** : Figma
+
+
 
 <br>
 
