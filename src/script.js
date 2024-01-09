@@ -56,7 +56,7 @@ const RenderCards = async (movieDataArr) => {
       idValue = movieObj["id"];
 
       addHTML = `
-              <div class="card" id="card"><p id="id" style="display:none">${idValue}<p>
+              <div class="card" id=${idValue}>
               <img class="movie-img" src="https://image.tmdb.org/t/p/original/${posterPath}" alt="Movie Poster">
               <div class="movie-content">
               <div class="name-rating-box">
@@ -77,8 +77,7 @@ const RenderCards = async (movieDataArr) => {
       cards.forEach((card) => {
         card.addEventListener("click", function (e) {
           target = e.currentTarget;
-          const idValue = target.children[0].textContent; //id값 가져오기
-          alert(`🎬Movie ID : ${idValue}`);
+          alert(`🎬Movie ID : ${target.id}`);
         });
       });
     });
@@ -127,13 +126,14 @@ const appendSearchedCard = async () => {
     const movieDataArr = res; //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
 
     const titleMatchArr = movieDataArr.filter((keys) => keys["title"].toLowerCase().includes(inputMovie)); //input으로 들어온 문자열을 포함하는 title을 갖고 있는 객체 추출
-    RenderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
 
     if (titleMatchArr.length === 0) {
       //일치 검색 결과가 없을 때 유효성 검사
       alert("검색 결과가 없습니다.");
       appendCard();
     }
+
+    RenderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
   } catch (err) {
     (err) => {
       //통신 실패 시
@@ -154,8 +154,12 @@ goBtn.addEventListener("click", async () => {
 
 /* input-movie요소에서 Enter 버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
 const inputEnterPressed = document.getElementById("input-movie");
-inputEnterPressed.addEventListener("keyup", function (e) {
+inputEnterPressed.addEventListener("keydown", function (e) {
   if (e.code === "Enter") {
-    appendSearchedCard();
+    if (!e.isComposing) {
+      appendSearchedCard();
+    }
   }
 });
+
+//isComposing = 한글이면 true, 영어면 false
