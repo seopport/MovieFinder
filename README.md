@@ -67,7 +67,7 @@ $ cd MovieFinder
 |                            메인틀                            |                           비고                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://github.com/seopport/MovieFinder/assets/103973797/905fd8a3-4c05-4d06-a3c1-c41822e92eea" style="width: 60%;" /> |                     메인 페이지 입니다.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    |
-|                             헤더                             |                                                              |
+|                             **헤더**                             |                                                              |
 | <img src="https://github.com/seopport/MovieFinder/assets/103973797/7eccbdde-29af-47f0-8412-b30d75aea115" style="width: 60%;" /> |              타이틀 헤더입니다.              |
 |                          **검색창**                          |                                                              |
 |<img src="https://github.com/seopport/MovieFinder/assets/103973797/b2eaa8ed-b8e7-4c2f-a82c-41b24c0833c5" style="width: 60%;" />| 검색할 영화를 입력할 검색창입니다.<br />Enter와 Go버튼을 사용해 검색할 수 있습니다. |
