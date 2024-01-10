@@ -16,6 +16,17 @@ OpenAPI를 활용하여 영화 검색 사이트 만들기
 
 **프로젝트 목표** : OpenAPI를 활용하여 인기 영화 리스트를 출력하고, 원하는 영화를 검색할 수 있습니다.
 
+<br>
+
+### 🔽  **개발 환경**
+
+- **editor :** Visual Studio Code
+- **environment :** git, github
+- **language :** Javascript
+- **API** : TMDb API
+- **design** : Figma
+
+
 
 <br>
 
@@ -27,6 +38,7 @@ OpenAPI를 활용하여 영화 검색 사이트 만들기
 $ git clone https://github.com/seopport/MovieFinder.git
 $ cd MovieFinder
 ```
++ vs code에서 라이브서버를 켜주세요.
 
 <br>
 
@@ -110,9 +122,9 @@ $ cd MovieFinder
 
 ### 🚦 트러블 슈팅
                                                                                                                                                                                                                             
-  **1. 문제**
+  #### **1. 문제**
   
-  검색창에 한글을 입력하고 엔터로 검색했을 때 발생하는 검색결과가 없음을 알리는 alert창이 두번 뜨는 버그 발생
+  검색창에 한글을 입력하고 엔터로 검색했을 때 발생하는 검색결과가 없음을 알리는 alert창이 두번 뜨는 버그 발생<br>
   영어로 검색하거나, Go버튼을 클릭하여 검색했을 때에는 버그가 발생하지 않았기 때문에 Enter의 이벤트 발생에서 한글입력에 대한 문제가 발생했을 것이라고 추론하였다.
   
   ```jsx
@@ -122,38 +134,38 @@ $ cd MovieFinder
     }
   ```
 
-<br>
   
-  **2. 시도**
+  #### **2. 시도**
   - EventListener의 이벤트타입을 keypress로 변경하기
   이벤트리스너에 할당한 이벤트타입을 `keyup → keypress`로 바꾸니 해결할 수 있었다. 그러나  `keypress`는 사용이 권장되지 않기때문에 다른 방법을 찾아보았다.
   
-  - isComposing 함수 사용하기
+  - isComposing 함수 사용하기<br>
   먼저 한글에서만 버그가 발생하는 이유는 한글이 자음과 모음의 조합으로 한 음절이 만들어지는 조합문자이기 때문이다. 그래서 조합되고있을 때 작업이 한번 수행되고, 조합이 완료되었을 때 작업이 한번 수행되어 총 두번의 작업이 수행되고 있었다. (*한글을 입력할 때 표시되는 밑줄이 조합되고 있음을 알려주는 표시다. 그래서 한글을 입력하고, 방향키를 눌러 밑줄을 없애 조합이 완료된 것으로 나타내면 해당 버그가 발생하지 않았다.)*
   영어는 한 음절이 하나의 알파벳으로 이루어지고, 조합문자가 아니기때문에 영어를 입력할 때는 버그가 발생하지 않았던 것이다.
   
   **-> 따라서 `isComposing`이라는 입력된 글자가 조합되고있는지 아닌지 판단하는 함수를 사용하고 이벤트타입을 `keydown`으로 설정하여 해결하였다.
   이벤트 타입을 `keydown`으로 설정하는 이유는 위 내용과 비슷하게 `keyup` 이벤트는 한글 입력 시 조합 중일 때도 이벤트가 발생하기 때문이다.**
 
-  <br>
+
   
-  **3. 해결방안**
+  #### **3. 해결방안**
   
   글자가 조합되고 있는지를 true/false로 반환하는 함수
   (조합 중 = true / 조합중이 아님 = false)
   isComposing에 false를 조건으로 사용하여 조합이 완료되었을 때 작업을 수행하도록 하였다.
 
    ```jsx
+inputEnterPressed.addEventListener("keyup", function (e) {
    if (e.code === "Enter") {
       if (!e.isComposing) {
         appendSearchedCard();
       }
     }
+}
   ```
 
-<br>
- 
-  **4. 선택한 방법**
+
+  #### **4. 선택한 방법**
   
   **isComposing 함수를 조건으로 부여**
 
