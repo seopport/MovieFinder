@@ -15,7 +15,7 @@ const loadJsonMovieData = async (URL) => {
     const response = await fetch(URL, options);
     if (response.status === 200) {
       const data = await response.json();
-      return data["results"];
+      return data.results;
     }
   } catch (error) {
     throw new HttpError(response);
@@ -31,7 +31,7 @@ class HttpError extends Error {
 }
 
 /* 카드 만드는 함수 */
-const RenderCards = async (movieDataArr) => {
+const renderCards = async (movieDataArr) => {
   try {
     let addHTML = ""; //
     let voteAverage; //평점
@@ -79,13 +79,10 @@ const RenderCards = async (movieDataArr) => {
 };
 
 /* API를 활용하여 받아온 데이터로 구성한 카드 생성하기 */
-const appendCard = async () => {
-  let res;
-
+const loadAndRenderMovieCards = async () => {
   try {
-    res = await loadJsonMovieData(URL); //loadJsonMovieData 함수로 데이터받아오기
-    const movieDataArr = res; //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
-    RenderCards(movieDataArr); //받아온 데이터로 카드 RenderCard
+    const movieDataArr = await loadJsonMovieData(URL); //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
+    renderCards(movieDataArr); //받아온 데이터로 카드 RenderCard
     numOfCards.style = "display: none;";
   } catch (err) {
     (err) => {
@@ -99,20 +96,17 @@ const appendCard = async () => {
   }
 };
 
-appendCard();
+loadAndRenderMovieCards();
 
 let numOfCards = document.getElementById("numOfCards");
 
 /* 검색한 조건에 맞는 영화 카드만 생성하기 */
-const appendSearchedCard = async () => {
+const loadAndRenderSearchedCards = async () => {
   const inputMovie = document.getElementById("input-movie").value.toLowerCase(); //사용자가 입력한 값
   document.getElementById("movie-cards-row").innerHTML = ""; //HTML을 비운 상태로 설정
 
-  let res;
   try {
-    res = await loadJsonMovieData(URL); //loadJsonMovieData 함수로 데이터받아오기
-    const movieDataArr = res; //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
-
+    const movieDataArr = await loadJsonMovieData(URL); //영화값들만 저장. 객체로 구성된 배열 형태 [{}, {}, ... {}]
     const titleMatchArr = movieDataArr.filter((keys) => keys["title"].toLowerCase().includes(inputMovie)); //input으로 들어온 문자열을 포함하는 title을 갖고 있는 객체 추출
 
     if (titleMatchArr.length === 0) {
@@ -122,7 +116,7 @@ const appendSearchedCard = async () => {
 
     numOfCards.textContent = `About ${titleMatchArr.length} results`;
     numOfCards.style = "display: inline";
-    RenderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
+    renderCards(titleMatchArr); //추출한 객체 배열들로 RenderCard
   } catch (err) {
     (err) => {
       //통신 실패 시
@@ -138,7 +132,7 @@ const appendSearchedCard = async () => {
 /* Go버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
 const goBtn = document.getElementById("search-btn");
 goBtn.addEventListener("click", async () => {
-  appendSearchedCard();
+  loadAndRenderSearchedCards();
 });
 
 /* input-movie요소에서 Enter 버튼 누를 시 사용자가 입력한 input과 일치하는 영화 검색 */
@@ -146,7 +140,7 @@ const inputEnterPressed = document.getElementById("input-movie");
 inputEnterPressed.addEventListener("keydown", function (e) {
   if (e.code === "Enter") {
     if (!e.isComposing) {
-      appendSearchedCard();
+      loadAndRenderSearchedCards();
     }
   }
 });
