@@ -8,7 +8,7 @@ const options = {
   }
 };
 
-const URL = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=829abd2f59161186fe076a0bf306e719&language=en-US&page=1`;
 
 const loadJsonMovieData = async (URL) => {
   try {
@@ -118,7 +118,6 @@ const appendSearchedCard = async () => {
     if (titleMatchArr.length === 0) {
       //일치 검색 결과가 없을 때 유효성 검사
       alert("검색 결과가 없습니다.");
-      appendCard();
     }
 
     numOfCards.textContent = `About ${titleMatchArr.length} results`;

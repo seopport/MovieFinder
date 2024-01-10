@@ -92,14 +92,13 @@ body {
 }
 
 .num-of-cards {
-  color: white;
+  color: rgb(254, 247, 255);
   font-size: 20px;
   font-style: italic;
   display: none;
   width: max-content;
   margin-bottom: 20px;
   padding-left: 10px;
-  position: static;
 }
 
 .movie-cards-row {
