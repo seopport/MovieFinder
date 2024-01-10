@@ -1,14 +1,15 @@
+const Key =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjlhYmQyZjU5MTYxMTg2ZmUwNzZhMGJmMzA2ZTcxOSIsInN1YiI6IjY1OTk1Nzg5YmQ1ODhiMDIwNDU3NTU1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.014IzV6JFQswTqZDfeIjHDud_khco-fa3a_GOd4V2gE";
+const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=829abd2f59161186fe076a0bf306e719&language=en-US&page=1`;
+
 /* api키 연결하고 데이터 받아오기 */
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjlhYmQyZjU5MTYxMTg2ZmUwNzZhMGJmMzA2ZTcxOSIsInN1YiI6IjY1OTk1Nzg5YmQ1ODhiMDIwNDU3NTU1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.014IzV6JFQswTqZDfeIjHDud_khco-fa3a_GOd4V2gE"
+    Authorization: `Bearer ${Key}`
   }
 };
-
-const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=829abd2f59161186fe076a0bf306e719&language=en-US&page=1`;
 
 const loadJsonMovieData = async (URL) => {
   try {
