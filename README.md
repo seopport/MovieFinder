@@ -33,12 +33,12 @@ OpenAPI를 활용하여 영화 검색 사이트 만들기
 
 ### **🔽 시작 가이드**
 
-
+**1. git clone**
 ```bash
 $ git clone https://github.com/seopport/MovieFinder.git
 $ cd MovieFinder
 ```
-+ vs code에서 라이브서버를 켜주세요.
+**2. vs code에서 라이브서버를 켜주세요.**
 
 <br>
 
